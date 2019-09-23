@@ -7,3 +7,44 @@
     <li><%= link_to 'Profile Page', jwhite31_path %></li>
     <li><%= link_to "Question", question_path %></li>
 </ul>
+
+<form action="/leave_feedback" method="post" id="form1">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" />
+  </div>
+
+  <div>
+    <span>Can we contact you by email?</span>
+    <div>
+      <input type="radio" name="reply" id="reply_true" value="true" />
+      <label for="reply_yes">Yes</label>
+    </div>
+    <div>
+      <input type="radio" name="reply" id="reply_false" value="false" />
+      <label for="reply_no">No</label>
+    </div>
+  </div>
+
+  <div>
+    <label for="feedback_type">Feedback type</label>
+    <select name="feedback_type" id="feedback_type">
+	<option value="">Choose one...</option>
+	<option value="Review">Review</option>
+	<option value="Bug Report">Bug Report</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="message">Message</label><br />
+    <textarea name="message" id="message" cols="27" rows="7"></textarea>
+  </div>
+
+  <button type="submit" form="form1" value="Send Feedback">Send Feedback</button>
+
+</form>
