@@ -22,4 +22,28 @@ class PagesController < ApplicationController
       format.html { render :question, locals: { q: q, answers: answers } }
     end
   end
+  def student_info
+    respond_to do |format|
+      format.html { render :student_info, locals: { feedback: {} } }
+    end
+  end
+  def leave_feedback
+    required = [:name, :email, :reply, :feedback_type, :message]
+    form_complete = true
+    required.each do |f|
+      if params.has_key? f and not params[f].blank?
+        # that's good news. do nothing
+      else
+        form_complete = false
+      end
+    end
+    if form_complete
+      form_status_msg = 'Student info saved successfully!'
+    else
+      form_status_msg = 'Error! Some student info is missing.'
+    end
+    respond_to do |format|
+      format.html { render :student_info, locals: { status_msg: form_status_msg, feedback: params } }
+    end
+  end
 end
